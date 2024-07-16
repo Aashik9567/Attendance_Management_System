@@ -36,7 +36,7 @@ const Login = () => {
             {/* Image Part */}
             <ImageDisplayer login={login} />
             {/* Login Part */}
-            <div className="md:w-1/2 h-screen bg-emerald-50 flex flex-col justify-center px-6 py-8">
+            <div className="md:w-1/2 h-screen bg-gradient-to-b from-purple-400 to-indigo-400 flex flex-col justify-center px-6 py-8">
                 <div className="text-center mb-4 md:mb-8">
                     <img className="w-[90px] h-[70px] inline-block mr-2" src={logo} alt="logo" />
                     <span className="text-2xl font-semibold">AAMS</span>

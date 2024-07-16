@@ -3,13 +3,10 @@ import Webroutes from './components/Webroutes'
 
 
 function App() {
-
-
   return (
     <>
-      <Webroutes/>
+      <Webroutes />
     </>
   )
 }
-
 export default App

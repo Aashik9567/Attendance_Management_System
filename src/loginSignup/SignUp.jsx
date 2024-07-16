@@ -28,7 +28,7 @@ const SignUp = () => {
   }
   const nav=useNavigate();
   const goToLogin=()=>{
-    nav("/");
+    nav("/login");
   }
 
   return (
@@ -37,7 +37,7 @@ const SignUp = () => {
         {/* Image Part */}
         <ImageDisplayer login={login} />
         {/* signup part */}
-        <div className="md:w-1/2 h-screen bg-teal-100 flex flex-col justify-center px-6 py-8">
+        <div className="md:w-1/2 h-screen bg-gradient-to-b from-purple-400 to-indigo-400 flex flex-col justify-center px-6 py-8">
           <div className="w-full rounded-lg shadow sm:max-w-md xl:p-0 mx-auto">
             <div className="p-6 md:space-y-4 sm:p-8">
               <h1 className="text-xl font-bold md:text-2xl text-center mb-4">
@@ -45,12 +45,11 @@ const SignUp = () => {
               </h1>
               <div className='mb-5 font-light text-sm'>Enter details to create your account</div>
               <form onSubmit={handleSubmit(submitHandle)} className="space-y-4 md:space-y-4" action="#">
-                <label htmlFor="Role" className="block mb-2 text-sm font-medium ">Select Role</label>
-                 <select id="Role" className="bg-gray-50 border border-blur-e00  text-sm rounded-lg  block w-full p-2" {...register("Role")}>
+                <select id="Role" className="bg-gray-50 border border-blur-e00  text-sm rounded-lg  block w-full p-2" {...register("Role")}>
                        <option value="">Select a role</option>
                        <option value="teacher" >Teacher</option>
                        <option value="student">Student</option>
-                 </select>
+                </select>
                  {errors.Role && (<p className="text-red-400">{errors.Role.message}</p>)}
                 <div className="grid md:grid-cols-2 md:gap-6">
                   <div className="relative z-0 w-full mb-5 group">
