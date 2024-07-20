@@ -4,11 +4,22 @@ import AttendanceSheet from './AttendanceSheet';
 import CourseList from './CourseList';
 import StudentStats from './StudentStats';
 import store from '../../zustand/loginStore';
-
+import AttendanceReport from './AttendanceReport';
+import Settings from './Settings';
+const attendanceData = [
+  { date: '2023-07-01', presentCount: 15, totalStudents: 20 },
+  { date: '2023-07-02', presentCount: 18, totalStudents: 20 },
+  { date: '2023-07-03', presentCount: 17, totalStudents: 20 },
+  // ... more data
+];
 const TeacherDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const {isLogin,loginUserData} = store(state=>state)
+  const { isLogin, loginUserData } = store(state => state)
+  const changeTab = (tabName) => {
+    setActiveTab(tabName);
+    setIsSidebarOpen(false);
+  };
   const navItems = [
     { name: 'Overview', icon: FaChalkboardTeacher },
     { name: 'Attendance', icon: FaUserGraduate },
@@ -41,12 +52,9 @@ const TeacherDashboard = () => {
           {navItems.map((item) => (
             <button
               key={item.name}
-              onClick={() => {
-                setActiveTab(item.name.toLowerCase());
-                setIsSidebarOpen(false);
-              }}
+              onClick={() => changeTab(item.name.toLowerCase())}
               className={`flex items-center w-full p-4 transition
-                ${activeTab === item.name.toLowerCase()
+              ${activeTab === item.name.toLowerCase()
                   ? 'bg-blue-700 border-l-4 border-white'
                   : 'hover:bg-blue-700 hover:border-l-4 hover:border-white'
                 }`}
@@ -74,24 +82,27 @@ const TeacherDashboard = () => {
           </div>
 
           {activeTab === 'overview' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <StudentStats />
-              <CourseList />
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-xl font-semibold mb-4">Quick Actions</h3>
-                <div className="space-y-2">
-                  <button className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition transform hover:scale-105">
-                    Take Attendance
-                  </button>
-                  <button className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 transition transform hover:scale-105">
-                    Create Assignment
-                  </button>
-                  <button className="w-full bg-purple-500 text-white p-2 rounded hover:bg-purple-600 transition transform hover:scale-105">
-                    Schedule Meeting
-                  </button>
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-1 mb-6">
+                <StudentStats />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 shadow-lg">
+                <CourseList />
+                <div className="text-xl font-semibold mb-4"><h3>
+                  Quick Actions
+                </h3>
+                  <div className="grid grid-cols-1 gap-6">
+                    <button
+                      onClick={() => changeTab('attendance')}
+                      className="md:w-[50%] bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition transform hover:scale-105">
+                      Take Attendance</button>
+                    <button className="md:w-[50%] bg-green-500 text-white p-2 rounded hover:bg-green-600 transition transform hover:scale-105">
+                      Create Assignment
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
 
           {activeTab === 'attendance' && (
@@ -104,21 +115,21 @@ const TeacherDashboard = () => {
           {activeTab === 'courses' && (
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Your Courses</h3>
-              <CourseList/>
+              <CourseList />
             </div>
           )}
 
           {activeTab === 'reports' && (
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Reports</h3>
-              <p>Here you can generate and view various reports.</p>
+              <AttendanceReport attendanceData={attendanceData} />
             </div>
           )}
 
           {activeTab === 'settings' && (
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Settings</h3>
-              <p>Manage your account settings and preferences here.</p>
+              <Settings />
             </div>
           )}
         </div>
