@@ -1,11 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
-import LandingPage from '../LandingPage'
+import StudentDashboard from './StudentDashboard'
 
 const Dashboard = () => {
   return (
     <div>
-      <Navbar/>
+      <StudentDashboard/>
     </div>
   )
 }
