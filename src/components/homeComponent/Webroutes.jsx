@@ -10,6 +10,8 @@ import TeacherDashboard from '../dashboardComponents/TeacherDashboard';
 import Login from '../../loginSignup/Login';
 import SignUp from '../../loginSignup/SignUp';
 import ProtectedRouter from '../../zustand/ProtectedRouter';
+import StudentDashboard from '../dashboardComponents/StudentDashboard';
+
 
 const Webroutes = () => {
   return (
@@ -19,6 +21,9 @@ const Webroutes = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/studentdashboard' element={<StudentDashboard />}/>
+  
+      
         
         <Route path='/teacherdashboard' element={<ProtectedRouter>
           <TeacherDashboard/> </ProtectedRouter>}/>

@@ -3,13 +3,11 @@ import {
   Box,
   VStack,
   Heading,
-  Text,
   SimpleGrid,
   FormControl,
   FormLabel,
   Input,
   Select,
-  Switch,
   Button,
   useToast,
   Divider,
@@ -54,49 +52,18 @@ const Settings = () => {
           </Flex>
           <SimpleGrid columns={2} spacing={4}>
             <FormControl>
-              <FormLabel>First Name</FormLabel>
+              <FormLabel>Full Name</FormLabel>
               <Input placeholder="John" />
             </FormControl>
             <FormControl>
-              <FormLabel>Last Name</FormLabel>
-              <Input placeholder="Doe" />
-            </FormControl>
-            <FormControl>
               <FormLabel>Email Address</FormLabel>
-              <Input placeholder="john.doe@example.com" type="email" />
+              <Input placeholder="aashik.077@example.com" type="email" />
             </FormControl>
             <FormControl>
               <FormLabel>Phone Number</FormLabel>
-              <Input placeholder="+1 (555) 123-4567" type="tel" />
+              <Input placeholder="+977980000000" type="tel" />
             </FormControl>
           </SimpleGrid>
-        </Box>
-
-        <Divider />
-
-        {/* Notification Preferences */}
-        <Box>
-          <Heading size="md" mb={4}>Notification Preferences</Heading>
-          <VStack align="stretch" spacing={3}>
-            <FormControl display="flex" alignItems="center">
-              <FormLabel htmlFor="email-alerts" mb="0">
-                Email Alerts
-              </FormLabel>
-              <Switch id="email-alerts" />
-            </FormControl>
-            <FormControl display="flex" alignItems="center">
-              <FormLabel htmlFor="sms-alerts" mb="0">
-                SMS Alerts
-              </FormLabel>
-              <Switch id="sms-alerts" />
-            </FormControl>
-            <FormControl display="flex" alignItems="center">
-              <FormLabel htmlFor="push-notifications" mb="0">
-                Push Notifications
-              </FormLabel>
-              <Switch id="push-notifications" />
-            </FormControl>
-          </VStack>
         </Box>
 
         <Divider />
